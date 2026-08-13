@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Req, Res, UploadedFi
 import { VideoService } from "./video.service";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
-import { v4 as uuid } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import type {Response, Request} from "express"
 import { CreateVideoDto } from "./dto/create-video.dto";
 import { UpdateVideoDto } from "./dto/update-video.dto";
@@ -20,7 +20,7 @@ export class VideoController{
                 destination: './uploads/videos',
                 filename: (req, file, cb) => {
                     const ext = file.originalname.split(".").pop()
-                    cb(null, `${uuid()}.${ext}`)
+                    cb(null, `${uuidv4()}.${ext}`)  
                 }
 
             })

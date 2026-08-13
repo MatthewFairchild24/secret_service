@@ -14,16 +14,38 @@ export class ServiceService{
     ){}
 
     async create(dto: CreateServiceDto):Promise<Service>{
-        const service = await this.repo.create(dto)
+        const service = await this.repo.create({
+            title: dto.title,
+            preview_text: dto.preview_text,
+            description: dto.description,
+            image_0: dto.image_id_0 ? {id: dto.image_id_0} : undefined,
+            image_1: dto.image_id_1 ? {id: dto.image_id_1} : undefined,
+            icon: dto.icon ? {id: dto.icon} : undefined
+
+        })
+
         return this.repo.save(service)
     }
 
     async findAll():Promise<Service[]>{
-        return this.repo.find()
+        return this.repo.find({
+            relations:{
+                image_0: true,
+                image_1: true, 
+                icon:true
+            }
+        })
     }
 
     async findOne(id: number):Promise<Service>{
-        const service = await this.repo.findOne({where: {id}})
+        const service = await this.repo.findOne({
+            where: {id},
+            relations:{
+                image_0: true,
+                image_1: true, 
+                icon:true
+            }
+        })
         if(!service) throw new NotFoundException('Service not found')
 
         return service

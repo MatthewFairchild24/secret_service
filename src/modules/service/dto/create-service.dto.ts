@@ -21,4 +21,8 @@ export class CreateServiceDto{
     @IsInt()
     image_id_1!:number
 
+    @IsOptional()
+    @IsInt()
+    icon!:number
+
 }
