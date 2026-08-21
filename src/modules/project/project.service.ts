@@ -14,16 +14,37 @@ export class ProjectService{
     ){}
 
     async create(dto: CreateProjectDto):Promise<Project>{
-        const project = await this.repo.create(dto)
+        const project = await this.repo.create({
+            title: dto.title,
+            description_0: dto.description_0,
+            description_1: dto.description_1,
+            description_2: dto.description_2,
+            short_text: dto.short_text,
+            image_0: dto.image_id_0 ? {id: dto.image_id_0} : undefined,
+            image_1: dto.image_id_1 ? {id: dto.image_id_1} : undefined,
+            video: dto.video_id ? {id: dto.video_id} : undefined
+        })
         return this.repo.save(project)
     }
 
     async findAll():Promise<Project[]>{
-        return this.repo.find()
+        return this.repo.find({
+            relations:{
+                image_0: true,
+                image_1: true,
+                video: true
+            }
+        })
     }
 
     async findOne(id:number):Promise<Project>{
-        const project = await this.repo.findOne({where:{id}})
+        const project = await this.repo.findOne({
+            where:{id},
+            relations:{
+                image_0:true,
+                image_1: true,
+                video: true
+            }})
         if(!project) throw new NotFoundException('Project not found')
         
         return project

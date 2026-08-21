@@ -9,10 +9,6 @@ async function bootstrap() {
   
   app.use('/uploads', express.static('/backend/uploads'))
 
-  app.use((req, res, next) => {
-    console.log('REQ:', req.url);
-    next();
-  });
 
   app.enableCors()
 

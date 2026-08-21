@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Gallery } from "../gallery/gallery.entity";
+import { Video } from "../video/video.entity";
 
 
 @Entity('project')
@@ -21,12 +23,17 @@ export class Project{
     @Column({type:'text'})
     short_text!:string
 
-    @Column({type:'int', nullable:true})
-    image_id_0!: number
+    @ManyToOne(() => Gallery)
+    @JoinColumn({name:'image_id_0'})
+    image_0!:Gallery
 
-    @Column({type:'int', nullable:true})
-    image_id_1!: number
+    @ManyToOne(() => Gallery)
+    @JoinColumn({name:'image_id_1'})
+    image_1!:Gallery
 
-    @Column({type:'int', nullable:true})
-    video_id!: string
+    @ManyToOne(() => Video)
+    @JoinColumn({name: 'video_id'})
+    video!: Video
+
+   
 }

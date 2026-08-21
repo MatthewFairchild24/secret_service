@@ -20,7 +20,10 @@ export class VideoController{
                 destination: './uploads/videos',
                 filename: (req, file, cb) => {
                     const ext = file.originalname.split(".").pop()
+                    console.log('[REQUEST]', req.url)
+
                     cb(null, `${uuidv4()}.${ext}`)  
+
                 }
 
             })
@@ -34,6 +37,7 @@ export class VideoController{
             size: file.size,
             path: file.path
         }
+        console.log('[UPLOAD]', data)
         return this.service.create(data)
     }
 
