@@ -22,19 +22,19 @@ export class ProjectController{
         return proj.map(ProjectMapper.toDo)
     }
 
-    @Get()
+    @Get(':id')
     async findOne(@Param('id') id:number){
         const proj = await this.service.findOne(id)
         return ProjectMapper.toDo(proj)
     }
 
-    @Patch()
+    @Patch(':id')
     async update(@Param('id') id:number, @Body() dto: UpdateProjectDto){
         const proj = await this.service.update(id, dto)
         return ProjectMapper.toDo(proj)
     }
 
-    @Delete()
+    @Delete(':id')
     remove(@Param('id') id:number){
         return this.service.remove(id)
     }

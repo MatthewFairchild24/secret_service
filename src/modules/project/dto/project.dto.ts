@@ -20,4 +20,9 @@ export class ProjectDto{
         id: string,
         url: string
     } | null
+
+    category!:{
+        id: number,
+        name: string
+    } | null
 }

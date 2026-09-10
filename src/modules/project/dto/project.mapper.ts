@@ -26,7 +26,12 @@ export class ProjectMapper{
             ? {
                 id: project.video.id,
                 url: `${process.env.API_URL}/${project.video.path}`
-            } :  null
+            } :  null,
+            category: project.category
+            ? {
+                id: project.category.id,
+                name: project.category.name
+            } : null
 
         }
     }

@@ -32,4 +32,8 @@ export class CreateProjectDto{
     @IsString()
     video_id!: string
 
+    @IsOptional()
+    @IsInt()
+    categories_id!: number
+
 }

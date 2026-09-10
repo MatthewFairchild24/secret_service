@@ -1,6 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Gallery } from "../gallery/gallery.entity";
 import { Video } from "../video/video.entity";
+import { ProjectCategories } from "../projectCategories/project_сategories.entity";
 
 
 @Entity('project')
@@ -34,6 +35,10 @@ export class Project{
     @ManyToOne(() => Video)
     @JoinColumn({name: 'video_id'})
     video!: Video
+
+    @ManyToOne(() => ProjectCategories)
+    @JoinColumn({name: 'categories_id'})
+    category!:ProjectCategories
 
    
 }

@@ -22,7 +22,8 @@ export class ProjectService{
             short_text: dto.short_text,
             image_0: dto.image_id_0 ? {id: dto.image_id_0} : undefined,
             image_1: dto.image_id_1 ? {id: dto.image_id_1} : undefined,
-            video: dto.video_id ? {id: dto.video_id} : undefined
+            video: dto.video_id ? {id: dto.video_id} : undefined,
+            category: dto.categories_id ? {id: dto.categories_id} : undefined
         })
         return this.repo.save(project)
     }
@@ -32,7 +33,8 @@ export class ProjectService{
             relations:{
                 image_0: true,
                 image_1: true,
-                video: true
+                video: true,
+                category: true
             }
         })
     }
@@ -43,7 +45,8 @@ export class ProjectService{
             relations:{
                 image_0:true,
                 image_1: true,
-                video: true
+                video: true,
+                category: true
             }})
         if(!project) throw new NotFoundException('Project not found')
         

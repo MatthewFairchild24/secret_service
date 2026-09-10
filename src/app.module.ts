@@ -8,6 +8,7 @@ import { VideoModule } from './modules/video/video.module';
 import { ProjectModule } from './modules/project/project.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { ServiceModule } from './modules/service/service.module';
+import { ProjectCategoriesModule } from './modules/projectCategories/project_сategories.module';
 
 
 @Module({
@@ -32,7 +33,8 @@ import { ServiceModule } from './modules/service/service.module';
       VideoModule,
       ProjectModule,
       ContactModule,
-      ServiceModule
+      ServiceModule,
+      ProjectCategoriesModule
   ],
   
 })
