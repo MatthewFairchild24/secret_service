@@ -22,16 +22,16 @@ export class ProjectCategoriesController{
 
     @Get(':id')
     async findOne(@Param('id') id:number){
-        return await this.findOne(id)
+        return await this.service.findOne(id)
     }
 
     @Patch(':id')
     async update(@Param('id') id: number, @Body() dto:UpdateProjectCategoriesDto){
-        return await this.update(id, dto)
+        return await this.service.update(id, dto)
     }
 
-    @Delete('id')
+    @Delete(':id')
     async remove(@Param('id') id: number){
-        return await this.remove(id)
+        return await this.service.remove(id)
     }
 }
