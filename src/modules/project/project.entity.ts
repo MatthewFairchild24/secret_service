@@ -24,21 +24,33 @@ export class Project{
     @Column({type:'text'})
     short_text!:string
 
-    @ManyToOne(() => Gallery)
+    @ManyToOne(() => Gallery,{
+        onDelete: "SET NULL",
+        nullable: true
+    })
     @JoinColumn({name:'image_id_0'})
-    image_0!:Gallery
+    image_0!:Gallery | null
 
-    @ManyToOne(() => Gallery)
+    @ManyToOne(() => Gallery,{
+        onDelete: "SET NULL",
+        nullable: true
+    })
     @JoinColumn({name:'image_id_1'})
-    image_1!:Gallery
+    image_1!:Gallery | null
 
-    @ManyToOne(() => Video)
+    @ManyToOne(() => Video,{
+        onDelete: "SET NULL",
+        nullable: true
+    })
     @JoinColumn({name: 'video_id'})
-    video!: Video
+    video!: Video | null
 
-    @ManyToOne(() => ProjectCategories)
+    @ManyToOne(() => ProjectCategories,{
+        onDelete: "SET NULL",
+        nullable: true
+    })
     @JoinColumn({name: 'categories_id'})
-    category!:ProjectCategories
+    category!:ProjectCategories | null
 
    
 }

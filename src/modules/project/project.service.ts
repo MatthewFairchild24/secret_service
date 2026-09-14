@@ -61,7 +61,7 @@ export class ProjectService{
 
     async remove(id:number){
         const project = await this.findOne(id)
-        this.repo.delete(project)
+        this.repo.delete(project.id)
 
         return {message: 'Project was deleted'}
     }

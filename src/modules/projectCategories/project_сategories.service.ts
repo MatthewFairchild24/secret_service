@@ -36,7 +36,8 @@ export class ProjectCategoriesService{
 
     async remove(id:number){
         const projectCategories = await this.findOne(id)
-        this.repo.delete(projectCategories)
+        await this.repo.delete(projectCategories)
+
         return {message: "Categories was deleted"}
     }
 }
