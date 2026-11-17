@@ -15,6 +15,11 @@ export class AdminController{
         return this.service.create(dto)
     }
 
+    @Post('auth')
+    login(@Body() dto: {login: string, password: string}){
+        return this.service.login(dto.login, dto.password)
+    }
+
     @Get()
     findAll(){
         return this.service.findAll()
